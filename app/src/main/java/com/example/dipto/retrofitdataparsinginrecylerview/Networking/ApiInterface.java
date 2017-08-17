@@ -14,5 +14,5 @@ import retrofit2.http.POST;
 public interface ApiInterface {
 
     @POST("retrofitpractice.php")
-    Call<List<RecylerNetworkModel>> getDetailList();
+    Call<RecylerNetworkModel> getDetailList();
 }

@@ -1,5 +1,9 @@
 package com.example.dipto.retrofitdataparsinginrecylerview.Networking;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
+import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
@@ -9,7 +13,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ApiClient {
 
-    public static final String BASE_URL = "http://programmerimtiaz.000webhostapp.com/" ;
+    public static final String BASE_URL = "http://programmerimtiaz.000webhostapp.com/retrofit/" ;
 
     public static Retrofit retrofit = null ;
 
@@ -17,8 +21,13 @@ public class ApiClient {
 
         if(retrofit == null){
 
-            retrofit = new Retrofit.Builder().baseUrl(BASE_URL).
-                    addConverterFactory(GsonConverterFactory.create()).build() ;
+            Gson gson = new GsonBuilder()
+                    .setLenient()
+                    .create();
+            OkHttpClient client = new OkHttpClient();
+
+            retrofit = new Retrofit.Builder().baseUrl(BASE_URL).client(client).
+                    addConverterFactory(GsonConverterFactory.create(gson)).build() ;
         }
         return retrofit ;
     }

@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.dipto.retrofitdataparsinginrecylerview.model.RecylerNetworkModel;
+import com.example.dipto.retrofitdataparsinginrecylerview.model.ServerResponse;
 
 import java.util.Collections;
 import java.util.List;
@@ -19,10 +20,10 @@ import java.util.List;
 public class RecylerAdapter extends RecyclerView.Adapter<RecylerAdapter.RecylerViewHolder> {
 
     private final LayoutInflater inflater;
-    private List<RecylerNetworkModel> list = Collections.emptyList() ;
+    private List<ServerResponse> list = Collections.emptyList() ;
     private Context context ;
 
-    public RecylerAdapter(Context context, List<RecylerNetworkModel> list){
+    public RecylerAdapter(Context context, List<ServerResponse> list){
         this.context = context ;
         this.list = list ;
         inflater = LayoutInflater.from(context) ;
@@ -38,9 +39,9 @@ public class RecylerAdapter extends RecyclerView.Adapter<RecylerAdapter.RecylerV
 
     @Override
     public void onBindViewHolder(RecylerViewHolder holder, int position) {
-        RecylerNetworkModel recylerNetworkModel = list.get(position) ;
-        holder.name.setText(recylerNetworkModel.getName());
-        holder.email.setText(recylerNetworkModel.getEmail());
+        ServerResponse serverResponse = list.get(position) ;
+        holder.name.setText(serverResponse.getName());
+        holder.email.setText(serverResponse.getEmail());
     }
 
     @Override
